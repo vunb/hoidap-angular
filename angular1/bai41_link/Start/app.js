@@ -1,0 +1,93 @@
+var myApp = angular.module('myApp', ['ngRoute']);
+
+myApp.config(function($routeProvider){
+    
+    $routeProvider.when('/', {
+        templateUrl: 'pages/main.html',
+        controller: 'mainController'
+    })
+    
+    .when('/second', {
+        templateUrl: 'pages/second.html',
+        controller: 'secondController'
+    })    
+    .when('/second/:num', {
+        templateUrl: 'pages/second.html',
+        controller: 'secondController'
+    })
+    
+});
+
+myApp.directive('searchResult', function(){
+    
+    return {
+        restrict: 'AECM',
+        templateUrl: 'directives/searchResult.html',
+        replace: true,
+        scope: {
+            personObject: '=',
+            formattedAddressFunction: '&'
+        },
+        compile: function(elem, attrs) {
+            
+            console.log('Compiling ...');
+            console.log(elem);
+            
+            // elem.removeAttr('class');
+            
+            return {
+
+                post: function(scope, elements, attrs) {
+                                   
+                    console.log('Post-linking ...');
+                    console.log(scope);
+                    
+                    if(scope.personObject.name == 'Phượng Đào') {
+                        elements.removeAttr('class');
+                    }
+                    
+                    console.log(elements); 
+     
+                }
+            }
+        }
+    }
+    
+})
+
+myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
+    
+    $scope.people = [
+        {
+            name: 'Hoa Lê',
+            address: '59 Láng Hạ',
+            city: 'Hà Nội',
+            country: 'Việt Nam'
+        },
+        {
+            name: 'Phượng Đào',
+            address: 'Đống Đa',
+            city: 'Hà Nội',
+            country: 'Việt Nam'
+        },
+        {
+            name: 'Công Tử',
+            address: 'Cầu Giấy',
+            city: 'Hà Nội',
+            country: 'Việt Nam'
+        }
+    ]
+    
+    $scope.formattedAddress = function(person) {
+        
+        return person.address + ', ' + person.city + ', ' + person.country;
+        
+    }
+
+}]);
+
+myApp.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
+    
+                                    
+}]);
+

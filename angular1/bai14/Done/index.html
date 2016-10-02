@@ -1,0 +1,63 @@
+<html lang="en" ng-app="myApp">
+
+<head>
+    <title>Tìm hiểu AngularJS</title>
+    <meta charset="utf-8">
+
+    <!-- load bootstrap and jquery via CDN -->
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.9/angular-messages.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.9/angular-resource.min.js"></script>
+    
+    
+    
+
+    <script type="text/javascript" src="app.js"></script>
+
+    <style>
+        * {
+            font-size: 1.05em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                    AngularJS
+                </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div ng-controller="mainController">
+
+            <form name="myForm">
+                <label>
+                    Enter text:
+                    <input type="text" ng-model="field" name="myField" required minlength="5" />
+                </label>
+                <div ng-messages="myForm.myField.$error" role="alert">
+                    <div ng-message="required" class="alert alert-danger">You did not enter a field</div>
+                    <div ng-message="minlength, maxlength" class="alert alert-danger">
+                        Your email must be between 5 and 100 characters long
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
