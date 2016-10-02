@@ -2,6 +2,7 @@
 
 Toàn bộ mã nguồn khóa học: Trọn bộ kiến thức về AngularJS 
 
+* Mã nguồn: [./angular1](./)
 * Lớp học Online: http://bit.ly/khoahoc_angularJS
 * Diễn đàn AngularJS/NodeJS: https://nodejs.vn
 
